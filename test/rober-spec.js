@@ -12,10 +12,16 @@ describe('Rober', function() {
   it('rober with empty instructions has the same position', function() {
     var rober = r.newRober(0, 0, 'N');
     var roberMoved = r.moveRober(rober, '');
-    expect(roberMoved.position).toBe(rober.position);
+    expect(JSON.stringify(roberMoved.position)).toBe(JSON.stringify(rober.position));
 
   });
 
+  it('rober with forward the position is not the same as before moving', function() {
+    var rober = r.newRober(0, 0, 'N');
+    var roberMoved = r.moveRober(rober, 'F');
+    expect(JSON.stringify(roberMoved.position)).not.toBe(JSON.stringify(rober.position));
+
+  });
 
 
 

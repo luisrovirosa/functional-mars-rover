@@ -1,12 +1,21 @@
 
-var newRober = function() {
+var newRober = function(x, y, facing) {
   return {
-    position: null
+    position: {
+      x: x,
+      y: y
+    },
+    facing: facing
   };
 };
 
-var moveRober = function() {
-  return newRober();
+var moveRober = function(rober, actions) {
+  var x = rober.position.x;
+  var y = rober.position.y;
+  if (actions) {
+    x = x + 1;
+  }
+  return newRober(x, y);
 };
 
 
