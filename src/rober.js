@@ -24,6 +24,12 @@ var rotateRigth = function(rober) {
   return newRober(rober.position.x, rober.position.y - 1, facing);
 };
 
+var rotateLeft = function(rober) {
+  var facing = orientations[orientations.indexOf(rober.facing) - 1];
+
+  return newRober(rober.position.x, rober.position.y - 1, facing);
+};
+
 
 var moveRober = function(rober, actions) {
   var newRober = rober;
@@ -38,6 +44,9 @@ var moveRober = function(rober, actions) {
         break;
       case 'R':
         newRober = rotateRigth(newRober);
+        break;
+      case 'L':
+        newRober = rotateLeft(newRober);
         break;
     }
   }
