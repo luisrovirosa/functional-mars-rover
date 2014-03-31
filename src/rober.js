@@ -17,6 +17,11 @@ var moveBackward = function(rober) {
   return newRober(rober.position.x, rober.position.y - 1, rober.facing);
 };
 
+var rotateRigth = function(rober) {
+  var facing = 'E';
+  return newRober(rober.position.x, rober.position.y - 1, facing);
+};
+
 
 var moveRober = function(rober, actions) {
   var newRober = rober;
@@ -28,6 +33,9 @@ var moveRober = function(rober, actions) {
         break;
       case 'B':
         newRober = moveBackward(newRober);
+        break;
+      case 'R':
+        newRober = rotateRigth(newRober);
         break;
     }
   }
