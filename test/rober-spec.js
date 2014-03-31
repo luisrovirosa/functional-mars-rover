@@ -65,6 +65,13 @@ describe('Rober', function() {
     expect(equals(roberMoved.facing, 'N')).toBe(true);
   });
 
+  it('rober with 0,0 rigth forward the position is 1,0 E', function() {
+    var roberMoved = r.moveRober(rober, 'RF');
+    var expectedRober = r.newRober(1, 0, 'E');
+
+    expect(equals(roberMoved, expectedRober)).toBe(true);
+  });
+
 });
 
 var equals = function(object1, object2) {

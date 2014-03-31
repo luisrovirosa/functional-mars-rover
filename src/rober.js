@@ -10,7 +10,16 @@ var newRober = function(x, y, facing) {
 };
 
 var moveForward = function(rober) {
-  return newRober(rober.position.x, rober.position.y + 1, rober.facing);
+  var x;
+  var y;
+  if (rober.facing === 'E') {
+    x = rober.position.x + 1;
+    y = rober.position.y;
+  } else {
+    x = rober.position.x;
+    y = rober.position.y + 1;
+  }
+  return newRober(x, y, rober.facing);
 };
 
 var moveBackward = function(rober) {
@@ -27,14 +36,13 @@ var rotate = function(facing, change) {
 
 var rotateRigth = function(rober) {
   var facing = rotate(rober.facing, 1);
-  return newRober(rober.position.x, rober.position.y - 1, facing);
+  return newRober(rober.position.x, rober.position.y, facing);
 };
 
 var rotateLeft = function(rober) {
   var facing = rotate(rober.facing, -1);
 
-
-  return newRober(rober.position.x, rober.position.y - 1, facing);
+  return newRober(rober.position.x, rober.position.y, facing);
 };
 
 
