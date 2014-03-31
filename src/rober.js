@@ -39,28 +39,27 @@ var rotateLeft = function(rober) {
 
 
 var moveRober = function(rober, actions) {
-  var newRober = rober;
-
-  var action = actions[0];
-  switch (action) {
-    case 'F':
-      newRober = moveForward(newRober);
-      break;
-    case 'B':
-      newRober = moveBackward(newRober);
-      break;
-    case 'R':
-      newRober = rotateRigth(newRober);
-      break;
-    case 'L':
-      newRober = rotateLeft(newRober);
-      break;
-  }
-  if (actions.length > 1) {
+  if (actions.length > 0) {
+    var newRober;
+    var action = actions[0];
+    switch (action) {
+      case 'F':
+        newRober = moveForward(rober);
+        break;
+      case 'B':
+        newRober = moveBackward(rober);
+        break;
+      case 'R':
+        newRober = rotateRigth(rober);
+        break;
+      case 'L':
+        newRober = rotateLeft(rober);
+        break;
+    }
     return moveRober(newRober, actions.substring(1));
   }
   else {
-    return newRober;
+    return rober;
   }
 };
 
