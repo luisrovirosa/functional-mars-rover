@@ -40,24 +40,28 @@ var rotateLeft = function(rober) {
 
 var moveRober = function(rober, actions) {
   var newRober = rober;
-  for (var i = 0; i < actions.length; i++) {
-    var action = actions[i];
-    switch (action) {
-      case 'F':
-        newRober = moveForward(newRober);
-        break;
-      case 'B':
-        newRober = moveBackward(newRober);
-        break;
-      case 'R':
-        newRober = rotateRigth(newRober);
-        break;
-      case 'L':
-        newRober = rotateLeft(newRober);
-        break;
-    }
+
+  var action = actions[0];
+  switch (action) {
+    case 'F':
+      newRober = moveForward(newRober);
+      break;
+    case 'B':
+      newRober = moveBackward(newRober);
+      break;
+    case 'R':
+      newRober = rotateRigth(newRober);
+      break;
+    case 'L':
+      newRober = rotateLeft(newRober);
+      break;
   }
-  return newRober;
+  if (actions.length > 1) {
+    return moveRober(newRober, actions.substring(1));
+  }
+  else {
+    return newRober;
+  }
 };
 
 
