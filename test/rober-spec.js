@@ -34,6 +34,12 @@ describe('Rober', function() {
     expect(equals(roberMoved, expectedRober)).toBe(true);
   });
 
+
+  it('rober with 0,0 forward, backward the position is 0,0 N', function() {
+    var roberMoved = r.moveRober(rober, 'FB');
+
+    expect(equals(roberMoved, rober)).toBe(true);
+  });
 });
 
 var equals = function(object1, object2) {

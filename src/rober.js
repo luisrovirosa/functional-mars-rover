@@ -12,8 +12,18 @@ var newRober = function(x, y, facing) {
 var moveRober = function(rober, actions) {
   var x = rober.position.x;
   var y = rober.position.y;
-  if (actions) {
-    y = y + 1;
+
+
+  for (var i = 0; i < actions.length; i++) {
+    var action = actions[i];
+    switch (action) {
+      case 'F':
+        y = y + 1;
+        break;
+      case 'B':
+        y = y - 1;
+        break;
+    }
   }
   var orientation = 'N';
   return newRober(x, y, rober.facing);
