@@ -13,9 +13,10 @@ var moveRober = function(rober, actions) {
   var x = rober.position.x;
   var y = rober.position.y;
   if (actions) {
-    x = x + 1;
+    y = y + 1;
   }
-  return newRober(x, y);
+  var orientation = 'N';
+  return newRober(x, y, rober.facing);
 };
 
 
