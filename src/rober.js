@@ -9,24 +9,29 @@ var newRober = function(x, y, facing) {
   };
 };
 
+var moveForward = function(rober) {
+  return newRober(rober.position.x, rober.position.y + 1, rober.facing);
+};
+
+var moveBackward = function(rober) {
+  return newRober(rober.position.x, rober.position.y - 1, rober.facing);
+};
+
+
 var moveRober = function(rober, actions) {
-  var x = rober.position.x;
-  var y = rober.position.y;
-
-
+  var newRober = rober;
   for (var i = 0; i < actions.length; i++) {
     var action = actions[i];
     switch (action) {
       case 'F':
-        y = y + 1;
+        newRober = moveForward(newRober);
         break;
       case 'B':
-        y = y - 1;
+        newRober = moveBackward(newRober);
         break;
     }
   }
-  var orientation = 'N';
-  return newRober(x, y, rober.facing);
+  return newRober;
 };
 
 
