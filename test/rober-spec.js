@@ -59,6 +59,12 @@ describe('Rober', function() {
     expect(equals(roberMoved.facing, 'N')).toBe(true);
   });
 
+  it('rober with 0,0 N right 4 times the orientation is N', function() {
+    var roberMoved = r.moveRober(rober, 'RRRR');
+
+    expect(equals(roberMoved.facing, 'N')).toBe(true);
+  });
+
 });
 
 var equals = function(object1, object2) {

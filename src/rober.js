@@ -20,9 +20,9 @@ var moveBackward = function(rober) {
 var orientations = 'NESW';
 var rotate = function(facing, change) {
   var index = orientations.indexOf(facing);
-  return orientations[index + change];
+  return orientations[(index + change) % orientations.length];
 
-}
+};
 
 
 var rotateRigth = function(rober) {
