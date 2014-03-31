@@ -18,14 +18,21 @@ var moveBackward = function(rober) {
 };
 
 var orientations = 'NESW';
-var rotateRigth = function(rober) {
-  var facing = orientations[orientations.indexOf(rober.facing) + 1];
+var rotate = function(facing, change) {
+  var index = orientations.indexOf(facing);
+  return orientations[index + change];
 
+}
+
+
+var rotateRigth = function(rober) {
+  var facing = rotate(rober.facing, 1);
   return newRober(rober.position.x, rober.position.y - 1, facing);
 };
 
 var rotateLeft = function(rober) {
-  var facing = orientations[orientations.indexOf(rober.facing) - 1];
+  var facing = rotate(rober.facing, -1);
+
 
   return newRober(rober.position.x, rober.position.y - 1, facing);
 };
