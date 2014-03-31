@@ -17,8 +17,10 @@ var moveBackward = function(rober) {
   return newRober(rober.position.x, rober.position.y - 1, rober.facing);
 };
 
+var orientations = 'NESW';
 var rotateRigth = function(rober) {
-  var facing = 'E';
+  var facing = orientations[orientations.indexOf(rober.facing) + 1];
+
   return newRober(rober.position.x, rober.position.y - 1, facing);
 };
 
