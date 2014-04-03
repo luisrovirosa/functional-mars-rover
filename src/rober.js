@@ -15,6 +15,9 @@ var moveForward = function(rober) {
   if (rober.facing === 'E') {
     x = rober.position.x + 1;
     y = rober.position.y;
+  } else if (rober.facing === 'W') {
+    x = rober.position.x - 1;
+    y = rober.position.y;
   } else {
     x = rober.position.x;
     y = rober.position.y + 1;
@@ -23,6 +26,7 @@ var moveForward = function(rober) {
 };
 
 var moveBackward = function(rober) {
+
   return newRober(rober.position.x, rober.position.y - 1, rober.facing);
 };
 

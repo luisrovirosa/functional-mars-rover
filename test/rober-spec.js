@@ -69,6 +69,18 @@ describe('Rober', function() {
     expect(equals(roberMoved, expectedRober)).toBe(true);
   });
 
+  it('rober move forward looking at west', function() {
+    var rober = r.newRober(2, 2, 'W')
+    var roberMoved = r.moveRober(rober, 'F');
+    var expectedRober = r.newRober(1, 2, 'W');
+    expect(equals(roberMoved, expectedRober)).toBe(true);
+  });
+
+//  it('rober all commands', function() {
+//    var roberMoved = r.moveRober(rober, 'FRFLBLF');
+//    expect(equals(roberMoved, rober)).toBe(true);
+//  });
+
 });
 
 var equals = function(object1, object2) {
