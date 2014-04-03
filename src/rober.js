@@ -13,14 +13,17 @@ var calulateMovement = function(facing) {
   return 'E' === facing || 'N' === facing ? 1 : -1;
 };
 
-var moveForward = function(rober) {
-  var facing = rober.facing;
-  var offset = calulateMovement(facing);
-  if ('N' === rober.facing || 'S' === facing) {
-    return newRober(rober.position.x, rober.position.y + offset, facing);
+var move = function(rober, movement) {
+  if ('N' === rober.facing || 'S' === rober.facing) {
+    return newRober(rober.position.x, rober.position.y + movement, rober.facing);
   } else {
-    return newRober(rober.position.x + offset, rober.position.y, facing);
+    return newRober(rober.position.x + movement, rober.position.y, rober.facing);
   }
+};
+
+var moveForward = function(rober) {
+  var offset = calulateMovement(rober.facing);
+  return move(rober, offset);
 };
 
 var moveBackward = function(rober) {
@@ -31,7 +34,7 @@ var moveBackward = function(rober) {
 var orientations = 'NESW';
 var rotate = function(facing, change) {
   var index = orientations.indexOf(facing);
-  return orientations[(index + change) % orientations.length];
+  return orientations[(index + change + orientations.length) % orientations.length];
 
 };
 

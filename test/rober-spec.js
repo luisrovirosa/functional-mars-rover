@@ -3,46 +3,121 @@ var r = require('../src/rober.js');
 describe('Rober', function() {
   var rober;
   beforeEach(function() {
-    rober = r.newRober(0, 0, 'N');
+    rober = r.newRober(2, 2, 'N');
 
   });
-  it('rober with empty instructions has the same position', function() {
+  it('with empty instructions remains at same position', function() {
     var roberMoved = r.moveRober(rober, '');
 
     expect(equals(roberMoved, rober)).toBe(true);
   });
 
-  it('rober with forward the position is not the same as before moving', function() {
-    var roberMoved = r.moveRober(rober, 'F');
+  describe('move forward', function() {
 
-    expect(equals(rober, roberMoved)).not.toBe(true);
+    it('has not the same position', function() {
+      var roberMoved = r.moveRober(rober, 'F');
+
+      expect(equals(rober, roberMoved)).not.toBe(true);
+    });
+
+    it('facing north increase 1 in y axis', function() {
+      var roberMoved = r.moveRober(rober, 'F');
+      var expectedRober = r.newRober(2, 3, 'N');
+
+      expect(equals(roberMoved, expectedRober)).toBe(true);
+    });
+
+    it('facing est increase 1 in x axis', function() {
+      var rober = r.newRober(2, 2, 'E');
+      var roberMoved = r.moveRober(rober, 'F');
+      var expectedRober = r.newRober(3, 2, 'E');
+
+      expect(equals(roberMoved, expectedRober)).toBe(true);
+    });
+
+    it('facing south decrease 1 in y axis', function() {
+      var rober = r.newRober(2, 2, 'S');
+      var roberMoved = r.moveRober(rober, 'F');
+      var expectedRober = r.newRober(2, 1, 'S');
+
+      expect(equals(roberMoved, expectedRober)).toBe(true);
+    });
+
+    it('facing west decrease 1 in x axis', function() {
+      var rober = r.newRober(2, 2, 'W');
+      var roberMoved = r.moveRober(rober, 'F');
+      var expectedRober = r.newRober(1, 2, 'W');
+
+      expect(equals(roberMoved, expectedRober)).toBe(true);
+    });
   });
 
-  it('rober with 0,0 forward the position is 0,1 N', function() {
-    var roberMoved = r.moveRober(rober, 'F');
-    var expectedRober = r.newRober(0, 1, 'N');
+  describe('move backwards', function() {
 
-    expect(equals(roberMoved, expectedRober)).toBe(true);
+  });
+
+  describe('rotate rigth', function() {
+    it('facing north change orientation to East', function() {
+      var roberMoved = r.moveRober(rober, 'R');
+      expect(equals(roberMoved.facing, 'E')).toBe(true);
+    });
+
+    it('facing East change orientation to South', function() {
+      var rober = r.newRober(2, 2, 'E');
+      var roberMoved = r.moveRober(rober, 'R');
+
+      expect(equals(roberMoved.facing, 'S')).toBe(true);
+    });
+    it('facing South change orientation to West', function() {
+      var rober = r.newRober(2, 2, 'S');
+      var roberMoved = r.moveRober(rober, 'R');
+
+      expect(equals(roberMoved.facing, 'W')).toBe(true);
+    });
+    it('facing West change orientation to North', function() {
+      var rober = r.newRober(2, 2, 'W');
+      var roberMoved = r.moveRober(rober, 'R');
+
+      expect(equals(roberMoved.facing, 'N')).toBe(true);
+    });
+  });
+
+  describe('rotate left', function() {
+    it('facing North change orientation to West', function() {
+      var roberMoved = r.moveRober(rober, 'L');
+      expect(equals(roberMoved.facing, 'W')).toBe(true);
+    });
+
+    it('facing East change orientation to North', function() {
+      var rober = r.newRober(2, 2, 'E');
+      var roberMoved = r.moveRober(rober, 'L');
+
+      expect(equals(roberMoved.facing, 'N')).toBe(true);
+    });
+    it('facing South change orientation to East', function() {
+      var rober = r.newRober(2, 2, 'S');
+      var roberMoved = r.moveRober(rober, 'L');
+
+      expect(equals(roberMoved.facing, 'E')).toBe(true);
+    });
+    it('facing West change orientation to South', function() {
+      var rober = r.newRober(2, 2, 'W');
+      var roberMoved = r.moveRober(rober, 'L');
+
+      expect(equals(roberMoved.facing, 'S')).toBe(true);
+    });
   });
 
 
-  it('rober with 0,0 forward, backward the position is 0,0 N', function() {
+// ----- Continue refactoring
+
+  it('moving forward and backward remains at same position and orientation', function() {
     var roberMoved = r.moveRober(rober, 'FB');
 
     expect(equals(roberMoved, rober)).toBe(true);
   });
 
-  it('rober with 0,0 N right the orientation is E', function() {
-    var roberMoved = r.moveRober(rober, 'R');
 
-    expect(equals(roberMoved.facing, 'E')).toBe(true);
-  });
-
-  it('rober with 0,0 N right rigth the orientation is E', function() {
-    var roberMoved = r.moveRober(rober, 'RR');
-
-    expect(equals(roberMoved.facing, 'S')).toBe(true);
-  });
 
   it('rober with 0,0 N right left the orientation is N', function() {
     var roberMoved = r.moveRober(rober, 'RL');
@@ -58,14 +133,14 @@ describe('Rober', function() {
 
   it('rober with 0,0 rigth forward the position is 1,0 E', function() {
     var roberMoved = r.moveRober(rober, 'RF');
-    var expectedRober = r.newRober(1, 0, 'E');
+    var expectedRober = r.newRober(3, 2, 'E');
 
     expect(equals(roberMoved, expectedRober)).toBe(true);
   });
 
   it('rober move forward rotate rigth and move forward', function() {
     var roberMoved = r.moveRober(rober, 'FFRFF');
-    var expectedRober = r.newRober(2, 2, 'E');
+    var expectedRober = r.newRober(4, 4, 'E');
     expect(equals(roberMoved, expectedRober)).toBe(true);
   });
 
