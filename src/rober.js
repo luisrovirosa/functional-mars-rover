@@ -9,23 +9,18 @@ var newRober = function(x, y, facing) {
   };
 };
 
+var calulateMovement = function(facing) {
+  return 'E' === facing || 'N' === facing ? 1 : -1;
+};
+
 var moveForward = function(rober) {
-  var x;
-  var y;
-  if (rober.facing === 'E') {
-    x = rober.position.x + 1;
-    y = rober.position.y;
-  } else if (rober.facing === 'W') {
-    x = rober.position.x - 1;
-    y = rober.position.y;
-  } else if (rober.facing === 'S') {
-    x = rober.position.x;
-    y = rober.position.y - 1;
+  var facing = rober.facing;
+  var offset = calulateMovement(facing);
+  if ('N' === rober.facing || 'S' === facing) {
+    return newRober(rober.position.x, rober.position.y + offset, facing);
   } else {
-    x = rober.position.x;
-    y = rober.position.y + 1;
+    return newRober(rober.position.x + offset, rober.position.y, facing);
   }
-  return newRober(x, y, rober.facing);
 };
 
 var moveBackward = function(rober) {

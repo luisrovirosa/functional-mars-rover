@@ -70,14 +70,14 @@ describe('Rober', function() {
   });
 
   it('rober move forward looking at west', function() {
-    var rober = r.newRober(2, 2, 'W')
+    var rober = r.newRober(2, 2, 'W');
     var roberMoved = r.moveRober(rober, 'F');
     var expectedRober = r.newRober(1, 2, 'W');
     expect(equals(roberMoved, expectedRober)).toBe(true);
   });
 
   it('rober move forward looking at south', function() {
-    var rober = r.newRober(2, 2, 'S')
+    var rober = r.newRober(2, 2, 'S');
     var roberMoved = r.moveRober(rober, 'F');
     var expectedRober = r.newRober(2, 1, 'S');
     expect(equals(roberMoved, expectedRober)).toBe(true);
