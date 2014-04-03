@@ -1,13 +1,6 @@
 
 var r = require('../src/rober.js');
 describe('Rober', function() {
-//  it('initial setup', function() {
-//    var rober = r.newRober(0, 0, 'N');
-//
-//    var roberMoved = r.moveRober(rober, 'ffrff');
-//    var expectedRober = r.newRober(2, 2, 'E');
-//    expect(roberMoved).toBe(expectedRober);
-//  });
   var rober;
   beforeEach(function() {
     rober = r.newRober(0, 0, 'N');
@@ -17,14 +10,12 @@ describe('Rober', function() {
     var roberMoved = r.moveRober(rober, '');
 
     expect(equals(roberMoved, rober)).toBe(true);
-
   });
 
   it('rober with forward the position is not the same as before moving', function() {
     var roberMoved = r.moveRober(rober, 'F');
 
     expect(equals(rober, roberMoved)).not.toBe(true);
-
   });
 
   it('rober with 0,0 forward the position is 0,1 N', function() {
@@ -69,6 +60,12 @@ describe('Rober', function() {
     var roberMoved = r.moveRober(rober, 'RF');
     var expectedRober = r.newRober(1, 0, 'E');
 
+    expect(equals(roberMoved, expectedRober)).toBe(true);
+  });
+
+  it('rober move forward rotate rigth and move forward', function() {
+    var roberMoved = r.moveRober(rober, 'FFRFF');
+    var expectedRober = r.newRober(2, 2, 'E');
     expect(equals(roberMoved, expectedRober)).toBe(true);
   });
 
