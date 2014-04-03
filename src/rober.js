@@ -18,6 +18,9 @@ var moveForward = function(rober) {
   } else if (rober.facing === 'W') {
     x = rober.position.x - 1;
     y = rober.position.y;
+  } else if (rober.facing === 'S') {
+    x = rober.position.x;
+    y = rober.position.y - 1;
   } else {
     x = rober.position.x;
     y = rober.position.y + 1;
