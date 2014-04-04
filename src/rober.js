@@ -50,28 +50,19 @@ var rotateLeft = function(rober) {
   return newRober(rober.position.x, rober.position.y, facing);
 };
 
+var supportedActions = {
+  F: moveForward,
+  B: moveBackward,
+  R: rotateRigth,
+  L: rotateLeft
+};
 
 var moveRober = function(rober, actions) {
   if (actions.length > 0) {
-    var newRober;
-    var action = actions[0];
-    switch (action) {
-      case 'F':
-        newRober = moveForward(rober);
-        break;
-      case 'B':
-        newRober = moveBackward(rober);
-        break;
-      case 'R':
-        newRober = rotateRigth(rober);
-        break;
-      case 'L':
-        newRober = rotateLeft(rober);
-        break;
-    }
+    var action = supportedActions[actions[0]];
+    var newRober = action(rober);
     return moveRober(newRober, actions.substring(1));
-  }
-  else {
+  } else {
     return rober;
   }
 };
