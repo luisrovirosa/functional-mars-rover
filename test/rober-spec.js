@@ -160,6 +160,13 @@ describe('Rober', function() {
     });
   });
 
+  describe('invalid actions', function() {
+    it('invalid action does nothing', function() {
+      var roberMoved = r.moveRober(rober, 'A');
+      expect(equals(roberMoved, rober)).toBe(true);
+    });
+  });
+
 });
 
 var equals = function(object1, object2) {

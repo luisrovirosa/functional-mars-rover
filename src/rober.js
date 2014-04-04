@@ -60,7 +60,7 @@ var supportedActions = {
 var moveRober = function(rober, actions) {
   if (actions.length > 0) {
     var action = supportedActions[actions[0]];
-    var newRober = action(rober);
+    var newRober = action ? action(rober) : rober;
     return moveRober(newRober, actions.substring(1));
   } else {
     return rober;
