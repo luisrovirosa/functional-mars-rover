@@ -3,12 +3,22 @@
 ## Motivation
 In a [Software Craftsmanship Madrid meetup](http://www.meetup.com/madswcraft/events/172940132/) the kata proposed was Mars Rover Kata in a functional way.
 
-## How to run
+## How to run install
 With [nodeJS](http://nodejs.org/) installed.
 
 	git clone https://github.com/luisrovirosa/functional-mars-rover.git
 	cd functional-mars-rover
 	npm install
+## How to run
+	node src/main.js <commands> [initial x]  [initial y] [facing]
+Valid commands:
+
+	F, B, R, L: See Rules below
+
+Example:
+
+	node src/main.js FFRFF 0 0 N
+## How to run tests
 	./node_modules/jasmine-node/bin/jasmine-node test --verbose --color
 
 ## Authors
