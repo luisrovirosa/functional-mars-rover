@@ -14,12 +14,6 @@ describe('Rober', function() {
 
   describe('move forward', function() {
 
-    it('has not the same position', function() {
-      var roberMoved = r.moveRober(rober, 'F');
-
-      expect(equals(rober, roberMoved)).not.toBe(true);
-    });
-
     it('facing north increase 1 in y axis', function() {
       var roberMoved = r.moveRober(rober, 'F');
       var expectedRober = r.newRober(2, 3, 'N');
@@ -53,6 +47,36 @@ describe('Rober', function() {
   });
 
   describe('move backwards', function() {
+    it('facing north decrease 1 in y axis', function() {
+      var roberMoved = r.moveRober(rober, 'B');
+      var expectedRober = r.newRober(2, 1, 'N');
+
+      expect(equals(roberMoved, expectedRober)).toBe(true);
+    });
+
+    it('facing est decrease 1 in x axis', function() {
+      var rober = r.newRober(2, 2, 'E');
+      var roberMoved = r.moveRober(rober, 'B');
+      var expectedRober = r.newRober(1, 2, 'E');
+
+      expect(equals(roberMoved, expectedRober)).toBe(true);
+    });
+
+    it('facing south increase 1 in y axis', function() {
+      var rober = r.newRober(2, 2, 'S');
+      var roberMoved = r.moveRober(rober, 'B');
+      var expectedRober = r.newRober(2, 3, 'S');
+
+      expect(equals(roberMoved, expectedRober)).toBe(true);
+    });
+
+    it('facing west increase 1 in x axis', function() {
+      var rober = r.newRober(2, 2, 'W');
+      var roberMoved = r.moveRober(rober, 'B');
+      var expectedRober = r.newRober(3, 2, 'W');
+
+      expect(equals(roberMoved, expectedRober)).toBe(true);
+    });
 
   });
 

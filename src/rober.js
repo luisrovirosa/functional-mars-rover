@@ -27,8 +27,8 @@ var moveForward = function(rober) {
 };
 
 var moveBackward = function(rober) {
-
-  return newRober(rober.position.x, rober.position.y - 1, rober.facing);
+  var offset = -calulateMovement(rober.facing);
+  return move(rober, offset);
 };
 
 var orientations = 'NESW';
