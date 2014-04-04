@@ -132,60 +132,33 @@ describe('Rober', function() {
     });
   });
 
+  describe('multiple movements', function() {
+    it('moving forward and backward remains at same position and orientation', function() {
+      var roberMoved = r.moveRober(rober, 'FB');
 
-// ----- Continue refactoring
+      expect(equals(roberMoved, rober)).toBe(true);
+    });
 
-  it('moving forward and backward remains at same position and orientation', function() {
-    var roberMoved = r.moveRober(rober, 'FB');
+    it('rotate left and rigth remains at same position and orientation', function() {
+      var roberMoved = r.moveRober(rober, 'RL');
 
-    expect(equals(roberMoved, rober)).toBe(true);
+      expect(equals(roberMoved, rober)).toBe(true);
+    });
+    it('rotate rigth 4 times remains at same position and orientation', function() {
+      var roberMoved = r.moveRober(rober, 'RRRR');
+
+      expect(equals(roberMoved, rober)).toBe(true);
+    });
+    it('rober move forward rotate rigth and move forward', function() {
+      var roberMoved = r.moveRober(rober, 'FFRFF');
+      var expectedRober = r.newRober(4, 4, 'E');
+      expect(equals(roberMoved, expectedRober)).toBe(true);
+    });
+    it('rober all commands doing a circle remains at same position', function() {
+      var roberMoved = r.moveRober(rober, 'FRFLBLFR');
+      expect(equals(roberMoved, rober)).toBe(true);
+    });
   });
-
-
-
-  it('rober with 0,0 N right left the orientation is N', function() {
-    var roberMoved = r.moveRober(rober, 'RL');
-
-    expect(equals(roberMoved.facing, 'N')).toBe(true);
-  });
-
-  it('rober with 0,0 N right 4 times the orientation is N', function() {
-    var roberMoved = r.moveRober(rober, 'RRRR');
-
-    expect(equals(roberMoved.facing, 'N')).toBe(true);
-  });
-
-  it('rober with 0,0 rigth forward the position is 1,0 E', function() {
-    var roberMoved = r.moveRober(rober, 'RF');
-    var expectedRober = r.newRober(3, 2, 'E');
-
-    expect(equals(roberMoved, expectedRober)).toBe(true);
-  });
-
-  it('rober move forward rotate rigth and move forward', function() {
-    var roberMoved = r.moveRober(rober, 'FFRFF');
-    var expectedRober = r.newRober(4, 4, 'E');
-    expect(equals(roberMoved, expectedRober)).toBe(true);
-  });
-
-  it('rober move forward looking at west', function() {
-    var rober = r.newRober(2, 2, 'W');
-    var roberMoved = r.moveRober(rober, 'F');
-    var expectedRober = r.newRober(1, 2, 'W');
-    expect(equals(roberMoved, expectedRober)).toBe(true);
-  });
-
-  it('rober move forward looking at south', function() {
-    var rober = r.newRober(2, 2, 'S');
-    var roberMoved = r.moveRober(rober, 'F');
-    var expectedRober = r.newRober(2, 1, 'S');
-    expect(equals(roberMoved, expectedRober)).toBe(true);
-  });
-
-//  it('rober all commands', function() {
-//    var roberMoved = r.moveRober(rober, 'FRFLBLF');
-//    expect(equals(roberMoved, rober)).toBe(true);
-//  });
 
 });
 
